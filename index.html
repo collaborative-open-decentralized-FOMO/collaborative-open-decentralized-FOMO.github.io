@@ -534,6 +534,7 @@
         }
         @media (max-width: 699px) {
             .schedule .who { font-size: 0.95rem; }
+            .schedule .row .what { grid-column: 1 / -1; margin-top: -0.6rem; }
         }
         .schedule .what {
             font-size: 0.92rem;
@@ -565,6 +566,61 @@
             font-variation-settings: normal;
         }
         .schedule .break-row .what { color: var(--ink-faint); font-style: italic; }
+        .schedule-day {
+            margin: 0;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--rule);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            color: var(--ink-faint);
+            max-width: none;
+        }
+        .schedule .remote {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.05rem 0.4rem;
+            border: 1px solid var(--rule);
+            border-radius: 3px;
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            vertical-align: 0.1em;
+        }
+        .schedule .what { min-width: 0; }
+        .schedule details.talk summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.35rem 0.75rem;
+        }
+        .schedule details.talk summary::-webkit-details-marker { display: none; }
+        .schedule .talk-title { color: var(--ink); font-weight: 500; }
+        .schedule .toggle {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+        .schedule .toggle::after { content: " +"; }
+        .schedule details[open] .toggle::after { content: " \2212"; }
+        .schedule details.talk summary:hover .toggle { text-decoration: underline; }
+        .schedule details.talk summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        .schedule .abstract {
+            margin: 0.75rem 0 0.25rem;
+            padding-left: 0.85rem;
+            border-left: 2px solid var(--rule);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
 
         /* ── CFP ──────────────────────────────────────────────────────────── */
         .cfp-subsection {
@@ -952,30 +1008,31 @@
         </div>
 
         <div class="schedule">
-            <div class="row"><div class="time">8:15 – 8:30</div><div class="who">Organizers</div><div class="what">Opening remarks</div></div>
+            <p class="schedule-day">Friday, 11 December 2026 · All times Sydney (AEDT, UTC+11)</p>
+            <div class="row"><div class="time">8:45 – 9:00</div><div class="who">Organizers</div><div class="what">Opening remarks</div></div>
 
-            <div class="session-row"><span class="session-num">Morning</span><span class="session-name">Keynotes, Contributed Talks, and Posters</span></div>
-            <div class="row"><div class="time">8:30 – 9:00</div><div class="who">Nathan Lambert</div><div class="what">Keynote 1: Pushing Frontiers in Open Language Model Post-Training</div></div>
-            <div class="row"><div class="time">9:00 – 9:30</div><div class="who">Invited speaker</div><div class="what">Keynote 2</div></div>
-            <div class="row break-row"><div class="time">9:30 – 9:45</div><div class="who"></div><div class="what">Coffee break</div></div>
-            <div class="row"><div class="time">9:45 – 10:00</div><div class="who">TBA</div><div class="what">Contributed talk: SESAME: Communication-Optimal Secure Aggregation for Sign-Based Federated Learning</div></div>
-            <div class="row"><div class="time">10:00 – 10:15</div><div class="who">TBA</div><div class="what">Contributed talk: GridFlow: Decentralized Block-Based Flow Matching</div></div>
-            <div class="row"><div class="time">10:15 – 10:30</div><div class="who">TBA</div><div class="what">Contributed talk: TBA</div></div>
-            <div class="row"><div class="time">10:30 – 11:00</div><div class="who">Invited speaker</div><div class="what">Keynote 3</div></div>
-            <div class="row"><div class="time">11:00 – 12:30</div><div class="who">All poster authors</div><div class="what">Interactive poster session</div></div>
-            <div class="row break-row"><div class="time">12:30 – 1:30</div><div class="who"></div><div class="what">Lunch</div></div>
+            <div class="session-row"><span class="session-num">Morning</span><span class="session-name">Invited Talks</span></div>
+            <div class="row"><div class="time">9:00 – 9:30</div><div class="who">Virginia Smith <span class="remote">Remote</span></div><div class="what">Invited talk</div></div>
+            <div class="row"><div class="time">9:30 – 10:00</div><div class="who">Alexander Long</div><div class="what">Invited talk</div></div>
+            <div class="row break-row"><div class="time">10:00 – 10:15</div><div class="who"></div><div class="what">Coffee break</div></div>
+            <div class="row"><div class="time">10:15 – 10:45</div><div class="who">Peter Richtárik</div><div class="what">Invited talk</div></div>
+            <div class="row"><div class="time">10:45 – 11:15</div><div class="who">Nathan Lambert <span class="remote">Remote</span></div><div class="what"><details class="talk"><summary><span class="talk-title">Pushing Frontiers in Open Language Model Post-Training</span><span class="toggle">Abstract</span></summary><p class="abstract">In this talk, I reflect on what it takes to do academic and open research that is not only relevant at the rapidly evolving AI frontier, but also impacts it. This will include reflections on what has worked in my past work building open language models (Olmos), and how I’m designing new problems in a more agentic era of research. This talk will cover foundations of post-training and early work in my more recent areas of focus, including character training, agentic RL, and measuring the automation of pieces of AI research. The talk will conclude with principles for choosing research problems as an academic and some ideas that I am interested in collaborating on.</p></details></div></div>
 
-            <div class="session-row"><span class="session-num">Afternoon</span><span class="session-name">Keynotes, Contributed Talks, and Panel</span></div>
-            <div class="row"><div class="time">1:30 – 2:00</div><div class="who">Invited speaker</div><div class="what">Keynote 4</div></div>
-            <div class="row"><div class="time">2:00 – 2:15</div><div class="who">TBA</div><div class="what">Contributed talk: SeedFlood: Toward Scalable Decentralized LLM Fine-tuning via Zeroth Order Optimization</div></div>
-            <div class="row"><div class="time">2:15 – 2:30</div><div class="who">TBA</div><div class="what">Contributed talk: TMax: A simple recipe for terminal agents</div></div>
-            <div class="row"><div class="time">2:30 – 2:45</div><div class="who">TBA</div><div class="what">Contributed talk: TBA</div></div>
-            <div class="row break-row"><div class="time">2:45 – 3:00</div><div class="who"></div><div class="what">Coffee break</div></div>
-            <div class="row"><div class="time">3:00 – 3:30</div><div class="who">Invited speaker</div><div class="what">Keynote 5</div></div>
-            <div class="row"><div class="time">3:30 – 4:45</div><div class="who">Invited speakers</div><div class="what">Panel discussion &amp; Q&amp;A — core research, scalability, and economic sustainability; moderated by the organizers</div></div>
+            <div class="session-row"><span class="session-num">Late morning</span><span class="session-name">Contributed Talks</span></div>
+            <div class="row"><div class="time">11:15 – 11:30</div><div class="who">Contributed talk</div><div class="what">TMax: A Simple Recipe for Terminal Agents</div></div>
+            <div class="row"><div class="time">11:30 – 11:45</div><div class="who">Contributed talk</div><div class="what">SeedFlood: Toward Scalable Decentralized LLM Fine-tuning via Zeroth Order Optimization</div></div>
+            <div class="row"><div class="time">11:45 – 12:00</div><div class="who">Contributed talk</div><div class="what">SESAME: Communication-Optimal Secure Aggregation for Sign-Based Federated Learning</div></div>
+            <div class="row"><div class="time">12:00 – 12:15</div><div class="who">Contributed talk</div><div class="what">GridFlow: Decentralized Block-Based Flow Matching</div></div>
+            <div class="row break-row"><div class="time">12:15 – 1:30</div><div class="who"></div><div class="what">Lunch</div></div>
+
+            <div class="session-row"><span class="session-num">Afternoon</span><span class="session-name">Invited Talks, Posters, and Panel</span></div>
+            <div class="row"><div class="time">1:30 – 2:00</div><div class="who">Ion Stoica</div><div class="what"><details class="talk"><summary><span class="talk-title">A proposal for a Collaborative Stack for Frontier-Scale 360-Open LLMs</span><span class="toggle">Abstract</span></summary><p class="abstract">Training frontier LLMs requires billions of dollars in compute, putting it beyond the reach of all but a few organizations. As a result, the most powerful models are built by a small number of mostly proprietary labs. While there are a few competitive open-weight models (e.g., DeepSeek v4, Kimi K3 or GLM 5.4), their developers typically release little beyond the weights, leaving out many of the artifacts needed to reproduce and audit the models: training data and data pipelines, training code and recipes, evaluation harnesses, and intermediate checkpoints. To address this limitation, we propose a decentralized approach that makes it easy for a diverse set of organizations to contribute resources to training state-of-the-art open models. In short, we propose a collaborative training stack in which each organization runs a training segment on its own infrastructure and hands off a signed checkpoint to the next organization. If successful, this effort will produce a powerful, fully open LLM that no single organization owns and which can be extensively and transparently evaluated and audited by the community.</p></details></div></div>
+            <div class="row"><div class="time">2:00 – 2:30</div><div class="who">Max Ryabinin</div><div class="what">Invited talk</div></div>
+            <div class="row"><div class="time">2:30 – 3:30</div><div class="who">All poster authors</div><div class="what">Poster session (18 posters) + coffee break</div></div>
+            <div class="row"><div class="time">3:30 – 4:45</div><div class="who">Invited speakers</div><div class="what">Panel discussion &amp; Q&amp;A</div></div>
             <div class="row"><div class="time">4:45 – 5:00</div><div class="who">Organizers</div><div class="what">Awards &amp; closing remarks</div></div>
         </div>
-        <p class="dates-foot">Schedule is tentative; keynote speaker assignments will be announced closer to the workshop.</p>
+        <p class="dates-foot">Talks marked Remote are given by video link. Select a talk title to read its abstract.</p>
     </div>
 </section>
 
